@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OPERATION BLACK VEIL — Echoes of Sector 9</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="canvas-container"></div>
+    <div id="damage-overlay"></div>
+
+    <!-- Tactical HUD -->
+    <div id="hud" class="hidden">
+      <div class="crosshair">+</div>
+      <div id="hitmarker" class="hitmarker hidden">×</div>
+      <div id="interact-prompt" class="interact-prompt hidden">
+        PRESS [E] TO DOWNLOAD BLACK-BOX DATA
+      </div>
+      <div class="hud-top-left">
+        <div class="sector-tag">SECTOR 9 // HOSTILES ACTIVE: <span id="hud-hostiles">5</span></div>
+        <div id="objective-text">OBJ 1/3: Breach Sector 9 Interior Facility</div>
+      </div>
+      <div class="hud-bottom">
+        <div class="hud-box">HP <span id="hud-health">100</span></div>
+        <div class="hud-box">AMMO <span id="hud-ammo">30 / 90</span></div>
+      </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="main-menu" class="overlay">
+      <div class="menu-panel">
+        <p class="classified-tag">TOP SECRET // TASK FORCE VANGUARD</p>
+        <h1>OPERATION BLACK VEIL</h1>
+        <h2>ECHOES OF SECTOR 9</h2>
+        <p class="briefing">
+          Infiltrate the abandoned Sector 9 military facility, recover the classified black-box data, and reach extraction.
+        </p>
+        <div id="loading-status" class="status-ready">SYSTEMS READY // ASSETS VERIFIED</div>
+        <button id="btn-deploy" class="btn-primary">DEPLOY OPERATOR</button>
+        <button id="btn-open-settings-main" class="btn-secondary">TACTICAL SETTINGS</button>
+      </div>
+    </div>
+
+    <!-- Pause Menu -->
+    <div id="pause-menu" class="overlay hidden">
+      <div class="menu-panel">
+        <h2>MISSION PAUSED</h2>
+        <button id="btn-resume" class="btn-primary">RESUME MISSION</button>
+        <button id="btn-open-settings-pause" class="btn-secondary">TACTICAL SETTINGS</button>
+        <button id="btn-restart-pause" class="btn-secondary">RESTART MISSION</button>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-menu" class="overlay hidden">
+      <div class="menu-panel">
+        <h2>TACTICAL SETTINGS</h2>
+        <div class="setting-row">
+          <label for="input-sensitivity">MOUSE SENSITIVITY</label>
+          <input id="input-sensitivity" type="range" min="0.0008" max="0.006" step="0.0002" value="0.0022" />
+        </div>
+        <div class="setting-row">
+          <label for="input-volume">MASTER VOLUME</label>
+          <input id="input-volume" type="range" min="0" max="1" step="0.05" value="0.7" />
+        </div>
+        <div class="setting-row">
+          <label for="select-quality">GRAPHICS QUALITY</label>
+          <select id="select-quality">
+            <option value="LOW">LOW (Performance)</option>
+            <option value="MEDIUM">MEDIUM (Balanced)</option>
+            <option value="HIGH">HIGH (Shadows + Hi-DPI)</option>
+          </select>
+        </div>
+        <button id="btn-close-settings" class="btn-primary">SAVE & RETURN</button>
+      </div>
+    </div>
+
+    <!-- Victory Screen -->
+    <div id="victory-menu" class="overlay hidden">
+      <div class="menu-panel">
+        <p class="classified-tag">EXTRACTION CONFIRMED</p>
+        <h1>MISSION ACCOMPLISHED</h1>
+        <h2>SECTOR 9 DATA SECURED</h2>
+        <p class="briefing">
+          Black-box telemetry successfully recovered and operator extracted from Sector 9.
+        </p>
+        <button id="btn-restart-win" class="btn-primary">REPLAY MISSION</button>
+      </div>
+    </div>
+
+    <!-- Defeat Screen -->
+    <div id="defeat-menu" class="overlay hidden">
+      <div class="menu-panel">
+        <p class="classified-tag">SIGNAL LOST // MIA</p>
+        <h1>OPERATOR DOWN</h1>
+        <h2>MISSION FAILED</h2>
+        <p class="briefing">
+          Vital signs terminated during Sector 9 infiltration.
+        </p>
+        <button id="btn-restart-lose" class="btn-primary">RETRY OPERATION</button>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
